@@ -1,5 +1,6 @@
 from app.domain.todo import Todo
 
+
 def test_done(faker):
     todo = Todo(
         title=faker.pystr(),
@@ -7,6 +8,7 @@ def test_done(faker):
     )
     todo.done()
     assert todo.is_done is True
+
 
 def test_not_done(faker):
     todo = Todo(
