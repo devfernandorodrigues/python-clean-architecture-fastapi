@@ -10,6 +10,7 @@ packages = [{include = "python_clean_architecture_fastapi"}]
 python = "^3.11"
 fastapi = "^0.93.0"
 uvicorn = {extras = ["standard"], version = "^0.21.0"}
+httpx = "^0.23.3"
 
 
 [tool.poetry.group.dev.dependencies]
