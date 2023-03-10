@@ -69,9 +69,9 @@ class TodoRepositorySqlAlchemy(TodoRepository):
 
     def create(self: Self, obj: Todo) -> Todo:
         with self.session() as session:
-            obj.uuid = str(uuid.uuid4())
-            session.add(obj)
-            session.commit()
+            with session.begin():
+                obj.uuid = str(uuid.uuid4())
+                session.add(obj)
             session.refresh(obj)
             return obj
 
@@ -101,7 +101,6 @@ class TodoRepositorySqlAlchemy(TodoRepository):
             with session.begin():
                 stmt = delete(Todo).where(Todo.uuid == uuid)
                 session.execute(stmt)
-                session.commit()
 
     def all(self: Self) -> list[Todo]:
         with self.session() as session:
