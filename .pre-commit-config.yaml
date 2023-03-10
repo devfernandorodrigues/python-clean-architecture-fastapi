@@ -1,0 +1,13 @@
+repos:
+  - repo: local
+    hooks:
+      - id: lint
+        language: system
+        name: lint
+        entry: task lint
+  - repo: local
+    hooks:
+      - id: test
+        language: system
+        name: test
+        entry: task test
