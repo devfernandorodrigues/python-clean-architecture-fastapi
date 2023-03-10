@@ -69,5 +69,6 @@ def update_todo(todo_schema: TodoSchema, todo_uuid: str):
 @app.delete("/todos/{todo_uuid}")
 def delete_todo(todo_uuid: str):
     repo = TodoRepositorySqlAlchemy(session)
+    repo.read(todo_uuid)
     TodoService.delete(todo_uuid, repo)
     return {}

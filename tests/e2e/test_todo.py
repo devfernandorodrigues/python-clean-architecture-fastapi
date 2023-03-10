@@ -77,3 +77,7 @@ def test_delete(faker):
     todo = add_todo(title=faker.pystr(), is_done=faker.pybool())
     resp = client.delete(f"/todos/{todo['uuid']}")
     assert resp.status_code == 200
+
+def test_delete_not_found():
+    resp = client.delete("/todos/notfound")
+    assert resp.status_code == 404
