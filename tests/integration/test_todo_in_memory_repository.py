@@ -1,13 +1,12 @@
 import pytest
 
 from app.domain.todo import Todo
-from app.repositories.base import ItemNotFound
-from app.repositories.in_memory import TodoInMemoryRepository
+from app.repositories.todo import ItemNotFound, TodoRepositoryInMemory
 
 
 @pytest.fixture
 def repo():
-    return TodoInMemoryRepository()
+    return TodoRepositoryInMemory()
 
 
 def test_create(faker, repo):
