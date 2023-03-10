@@ -38,7 +38,6 @@ class TodoRepository(metaclass=ABCMeta):
 class TodoRepositoryInMemory(TodoRepository):
     def __init__(self) -> None:
         self.items: Dict[str, Todo] = {}
-        super().__init__()
 
     def create(self: Self, obj: Todo) -> Todo:
         obj.uuid = str(uuid.uuid4())
